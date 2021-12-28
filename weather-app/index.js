@@ -43,7 +43,7 @@ const searchCity = async (e) => {
     newCityName.value = "";
   } catch (err) {
     console.log(err);
-    error.innerHTML = `Can't find a city called ${newCityName}`;
+    error.innerHTML = `Can't find a city called ${newCityName.value}`;
   }
 };
 
