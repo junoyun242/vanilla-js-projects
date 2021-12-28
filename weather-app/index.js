@@ -3,17 +3,25 @@ const mainSelector = document.querySelector("main");
 const weatherAPIKey = "4a80048ac273c6f7e70908e2bb631fee";
 
 const getLocation = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      const data = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIKey}&units=metric`
-      );
+  const failed = (err) => {
+    console.log(err);
+    alert("Can't access your location");
+  };
 
-      const weatherData = await data.json();
-      displayWeather(weatherData);
-    });
+  const success = async (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    const data = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIKey}&units=metric`
+    );
+
+    const weatherData = await data.json();
+    displayWeather(weatherData);
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, failed);
   } else {
     alert("Can't access your location");
   }
@@ -40,6 +48,7 @@ const searchCity = async (e) => {
 };
 
 const displayWeather = (weather) => {
+  console.log("hello");
   const displayWeather = document.querySelector(".display-weather");
   const cityName = document.querySelector(".city-name");
   const generalDescription = document.querySelector(".weather-description");
@@ -50,7 +59,7 @@ const displayWeather = (weather) => {
   const nameOfCity = weather.name;
   const { main, description, icon, id } = weather.weather[0];
   const weatherMain = weather.main;
-  const iconCode = `<image src="http://openweathermap.org/img/wn/${icon}@2x.png"></image>`;
+  const iconCode = `<image src="https://openweathermap.org/img/wn/${icon}@2x.png"></image>`;
   cityName.innerHTML =
     nameOfCity + " " + iconCode + Math.round(weatherMain.temp) + "℃";
   generalDescription.innerHTML = `Weather: ${main} (${description})`;
