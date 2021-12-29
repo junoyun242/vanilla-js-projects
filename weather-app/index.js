@@ -160,12 +160,23 @@ const displayAirQuality = async (cityName) => {
       "Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.";
 
     bgColor = "#661E99";
-  } else {
+  } else if (aqi > 300) {
     airPollutionLevel = "Hazardous";
     healthImplications =
       "Health alert: everyone may experience more serious health effects";
     cautionaryStatement = "Everyone should avoid all outdoor exertion";
     bgColor = "#7E0E23";
+  } else {
+    airQuality.style.backgroundColor = "transparent";
+    airQualityHeader.innerHTML = `Can't find air quality data for ${cityName}`;
+    airQualityHeader.style.fontSize = "20px";
+    airQualityHeader.style.color = "rgb(160, 31, 31)";
+    levelElem.innerHTML = "";
+    implicationsTitleElem.innerHTML = "";
+    implicationsElem.innerHTML = "";
+    statementTitleElem.innerHTML = "";
+    statementElem.innerHTML = "";
+    return;
   }
 
   airQualityHeader.innerHTML = "Air Quality";
