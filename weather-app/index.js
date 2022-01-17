@@ -108,6 +108,7 @@ const displayAirQuality = async (cityName) => {
   const airQualityHeader = document.querySelector(".air-quality-header");
   const airQuality = document.querySelector(".air-quality");
   const levelElem = airQuality.querySelector(".level");
+  const progressElem = airQuality.querySelector("progress");
   const implicationsTitleElem = airQuality.querySelector(".implications-title");
   const implicationsElem = airQuality.querySelector(".implications");
   const statementTitleElem = airQuality.querySelector(".statement-title");
@@ -183,6 +184,7 @@ const displayAirQuality = async (cityName) => {
   airQuality.style.backgroundColor = bgColor;
 
   levelElem.innerHTML = `${airPollutionLevel} ( ${aqi} )`;
+  progressElem.value = aqi;
   implicationsTitleElem.innerHTML = "Health Implications";
   implicationsElem.innerHTML = `${healthImplications}`;
   statementTitleElem.innerHTML = "Cautionary Statement (for PM2.5)";

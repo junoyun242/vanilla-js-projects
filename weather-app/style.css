@@ -90,6 +90,12 @@ main {
   align-self: flex-start;
 }
 
+.display-weather .air-quality progress {
+  align-self: center;
+  height: 30px;
+  width: 50%;
+}
+
 .display-weather .air-quality .level {
   align-self: center;
 }
