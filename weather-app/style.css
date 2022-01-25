@@ -59,6 +59,7 @@ main {
 /* Display weather */
 
 .display-weather {
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;

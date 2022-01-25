@@ -57,6 +57,8 @@ const displayWeather = (weather) => {
   const tempMax = document.querySelector(".temp-max");
   const feelsLike = document.querySelector(".feels-like");
 
+  displayWeather.style.visibility = "visible";
+
   const nameOfCity = weather.name;
   const { main, description, icon, id } = weather.weather[0];
   const weatherMain = weather.main;
