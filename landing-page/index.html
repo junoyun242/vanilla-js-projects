@@ -8,23 +8,27 @@
   <title>Landing Page</title>
 </head>
 <body>
-  <div class="profile">
-    <h2 class="day"></h2>
-    <h2 class="time"></h2>
-    <div class="name static-mode">
-      <h2>Hello! <span class="username">What's your name?</span></h2>
+  <main>
+    <div class="profile">
+      <h2 class="day"></h2>
+      <h2 class="time"></h2>
+      <div class="name static-mode">
+        <h2>Hello! <span class="username">What's your name?</span></h2>
+      </div>
+      <form class="name change-mode">
+        <h2>Hello! <input /></h2>
+      </form>
     </div>
-    <form class="name change-mode">
-      <h2>Hello! <input /></h2>
-    </form>
-  </div>
-  <div class="todo-list">
-    <div class="new-todo">
-      <input type="text" placeholder="Write new todo">
-      <button>Submit</button>
+    <div class="todo-list">
+      <div class="new-todo">
+        <input type="text" placeholder="Write new todo">
+        <button>Submit</button>
+      </div>
+      <div class="todos">
+        <div class="todo">Write down your todos for today</div>
+      </div>
     </div>
-    <div class="todos"></div>
-  </div>
+  </main>
   <script src="index.js"></script>
 </body>
 </html>

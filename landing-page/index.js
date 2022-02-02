@@ -1,4 +1,6 @@
 const setNameBtn = document.querySelector(".profile .username");
+const newTodoInput = document.querySelector(".new-todo input");
+const newTodoBtn = document.querySelector(".new-todo button");
 
 const getUserName = () => {
   const usernameElem = document.querySelector(".name .username");
@@ -6,6 +8,74 @@ const getUserName = () => {
   if (username) {
     usernameElem.innerHTML = username;
   }
+};
+
+const getTodos = () => {
+  const todosElem = document.querySelector(".todos");
+  const todos = localStorage.getItem("todos");
+  const previousTodos = document.querySelectorAll(".todo");
+  const html = JSON.parse(todos).data.map((elem) => `${elem}`);
+
+  if (html.length === 0) {
+    previousTodos.forEach((elem) => {
+      elem.remove();
+    });
+    const newDiv = document.createElement("div");
+    newDiv.className = "todo";
+    newDiv.innerHTML = "Write down your todos for today";
+    todosElem.appendChild(newDiv);
+    return;
+  }
+
+  previousTodos.forEach((elem) => {
+    elem.remove();
+  });
+
+  if (todos) {
+    html.forEach((elem, index) => {
+      const newDiv = document.createElement("div");
+      const newElem = document.createElement("span");
+      const newBtn = document.createElement("button");
+      newDiv.className = "todo";
+      newBtn.id = index;
+      newElem.innerHTML = `${index + 1}. ${elem}`;
+      newBtn.innerHTML = "❌";
+      newBtn.onclick = () => deleteTodo(index);
+      newDiv.appendChild(newElem);
+      newDiv.appendChild(newBtn);
+      todosElem.appendChild(newDiv);
+    });
+  }
+};
+
+const newTodos = () => {
+  const newTodoElem = document.querySelector(".new-todo");
+  const inputElem = newTodoElem.querySelector("input");
+  const todos = localStorage.getItem("todos");
+
+  if (!todos) {
+    const newTodos = { data: [inputElem.value] };
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+    getTodos();
+    return;
+  }
+
+  const todoList = JSON.parse(todos);
+  todoList.data.push(inputElem.value);
+  localStorage.setItem("todos", JSON.stringify(todoList));
+
+  getTodos();
+
+  newTodoInput.focus();
+  newTodoInput.value = "";
+};
+
+const deleteTodo = (index) => {
+  const todos = localStorage.getItem("todos");
+  const todoList = JSON.parse(todos);
+  todoList.data.splice(index, 1);
+  localStorage.setItem("todos", JSON.stringify(todoList));
+  getTodos();
 };
 
 const displayTime = () => {
@@ -16,7 +86,7 @@ const displayTime = () => {
   setInterval(() => {
     const currentTime = new Date();
     const month = addZero(currentTime.getMonth() + 1);
-    const date = currentTime.getDate();
+    const date = addZero(currentTime.getDate());
     const day = calculateDay(currentTime.getDay());
     const hours = calculateHours(currentTime.getHours());
     const minutes = addZero(currentTime.getMinutes());
@@ -81,5 +151,10 @@ const setUserName = () => {
 
 displayTime();
 getUserName();
+getTodos();
 
 setNameBtn.addEventListener("click", setUserName);
+newTodoBtn.addEventListener("click", newTodos);
+newTodoInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") newTodos();
+});
