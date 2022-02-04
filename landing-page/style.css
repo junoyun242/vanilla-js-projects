@@ -1,5 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
+/* Common */
+
+.delete-btn {
+  border: none;
+  border-radius: 5px;
+  color: red;
+  font-size: large;
+  font-weight: 900;
+}
+
+.input-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field input {
+  border: none;
+  padding: 5px 0px 5px 5px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.input-field button {
+  border: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(81, 81, 240);
+}
+
+a:hover {
+  color: rgb(226, 78, 182);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* Specific */
+
 body {
   font-family: "Roboto Mono", monospace;
   background-image: url("./public/backgroundimg.jpeg");
@@ -20,6 +64,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 200px;
 }
 
 .profile {
@@ -32,7 +77,7 @@ main {
 
 .profile h2 {
   margin: 10px;
-  padding: 20px 50px;
+  padding: 10px 50px;
 }
 
 .profile .name {
@@ -46,6 +91,10 @@ main {
   cursor: pointer;
 }
 
+.profile .username:hover {
+  color: rgb(247, 142, 215);
+}
+
 .profile .change-mode {
   display: none;
 }
@@ -53,11 +102,7 @@ main {
 .todo-list {
   margin: 20px;
   margin-top: 0px;
-}
-
-.todo-list .new-todo {
-  display: flex;
-  justify-content: center;
+  margin-bottom: 0px;
 }
 
 .todo-list .todos {
@@ -72,4 +117,38 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 5px 0px;
+}
+
+.bookmark-header {
+  display: flex;
+  justify-content: center;
+}
+
+.bookmark-header h2 {
+  color: rgb(75, 71, 71);
+  background-color: rgba(241, 236, 236, 0.8);
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 20px 10px 20px;
+  width: 60%;
+  margin-bottom: 0px;
+}
+
+.bookmarks {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.bookmarks .bookmark {
+  background-color: rgba(241, 236, 236, 0.8);
+  border-radius: 10px;
+  width: 100px;
+  padding: 20px 30px 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: large;
 }

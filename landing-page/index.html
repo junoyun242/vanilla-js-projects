@@ -5,6 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <link rel="apple-touch-icon" href="/icons/icon-96x96.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+  <meta name="theme-color" content="#FFE1C4">
   <title>Landing Page</title>
 </head>
 <body>
@@ -13,14 +17,14 @@
       <h2 class="day"></h2>
       <h2 class="time"></h2>
       <div class="name static-mode">
-        <h2>Hello! <span class="username">What's your name?</span></h2>
+        <h2>Hello! <span class="username">What's your name? ✅</span></h2>
       </div>
       <form class="name change-mode">
         <h2>Hello! <input /></h2>
       </form>
     </div>
     <div class="todo-list">
-      <div class="new-todo">
+      <div class="new-todo input-field">
         <input type="text" placeholder="Write new todo">
         <button>Submit</button>
       </div>
@@ -28,7 +32,28 @@
         <div class="todo">Write down your todos for today</div>
       </div>
     </div>
+    <div class="bookmark-container">
+      <form class="new-bookmark input-field">
+        <input type="url" placeholder="Insert a URL">
+        <button>Submit</button>
+      </form>
+      <div class="bookmark-header">
+        <h2>Bookmarks</h2>
+      </div>
+      <div class="bookmarks">
+      </div>
+    </div>
   </main>
   <script src="index.js"></script>
+  <!-- <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+      .register("/sw.js")
+      .then((reg) => {
+        console.log("Serice Worker Registered", reg);
+      })
+      .catch((err) => console.log("service worker not registered", err));
+    }
+  </script> -->
 </body>
 </html>
