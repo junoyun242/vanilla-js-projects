@@ -39,6 +39,8 @@ const setUserName = () => {
     }
   };
 
+  input.value = "";
+
   window.addEventListener("click", abortChange);
 };
 
