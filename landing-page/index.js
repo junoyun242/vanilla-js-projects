@@ -171,19 +171,19 @@ const calculateMonth = (month) => {
 const calculateDay = (day) => {
   switch (day) {
     case 0:
-      return "Sunday";
+      return "Sun";
     case 1:
-      return "Monday";
+      return "Mon";
     case 2:
-      return "Tueday";
+      return "Tue";
     case 3:
-      return "Wedday";
+      return "Wed";
     case 4:
-      return "Thuday";
+      return "Thu";
     case 5:
-      return "Friday";
+      return "Fri";
     case 6:
-      return "Satday";
+      return "Sat";
     default:
       break;
   }
