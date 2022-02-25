@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  background-color: rgb(243, 240, 240, 0.3);
 }
 
 a {
@@ -29,14 +30,42 @@ a {
 
 .sites {
   display: flex;
+  position: absolute;
+  top: -200px;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  animation-name: drop;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
 }
 
 .site {
-  background-color: rgb(211, 209, 209);
+  background-color: rgb(243, 240, 240, 0.4);
   border-radius: 20px;
+  margin: 20px 20px 20px 20px;
   padding: 20px;
+  box-shadow: 5px 5px 5px gray;
+  flex-basis: 40%;
+  align-self: stretch;
+}
+
+@media (max-width: 600px) {
+  .site {
+    flex-basis: 90%;
+  }
+}
+
+@keyframes drop {
+  from {
+    position: relative;
+    top: -100px;
+  }
+  to {
+    position: relative;
+    top: 0;
+  }
 }

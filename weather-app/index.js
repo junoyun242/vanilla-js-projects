@@ -186,7 +186,15 @@ const displayAirQuality = async (cityName) => {
   airQuality.style.backgroundColor = bgColor;
 
   levelElem.innerHTML = `${airPollutionLevel} ( ${aqi} )`;
-  progressElem.value = aqi;
+  progressElem.value = 0;
+
+  const fillProgressBar = setInterval(() => {
+    progressElem.value++;
+    if (progressElem.value === aqi) {
+      clearInterval(fillProgressBar);
+    }
+  }, 6);
+  progressElem.style.visibility = "visible";
   implicationsTitleElem.innerHTML = "Health Implications";
   implicationsElem.innerHTML = `${healthImplications}`;
   statementTitleElem.innerHTML = "Cautionary Statement (for PM2.5)";

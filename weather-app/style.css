@@ -19,7 +19,7 @@ body {
   padding-bottom: 20px;
   font-size: 22px;
   margin: 0;
-  color: rgb(218, 212, 212);
+  color: rgb(245, 238, 238);
 }
 
 main {
@@ -92,6 +92,7 @@ main {
 }
 
 .display-weather .air-quality progress {
+  visibility: hidden;
   align-self: center;
   height: 30px;
   width: 50%;
